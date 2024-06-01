@@ -4,10 +4,10 @@ namespace Cadastro_Login.Servicos;
 
 internal class Cadastrar
 {
-    List<Usuario> usuariosRegistrados = new();
+    public List<Usuario> usuariosRegistrados = new();
 
-    List<string> usuarioLogin = new();
-    List<string> usuariosSenhas = new();
+    public List<string> usuarioLogin = new();
+    public List<string> usuariosSenhas = new();
 
     private readonly string email;
     private readonly string senha;
@@ -17,10 +17,14 @@ internal class Cadastrar
    
         Console.WriteLine("Digite seu Nome de Usuário: ");
         string nome = Console.ReadLine();
+
+        // As variaveis email e senha estavam sendo salvas nulas pois não estavam em escopo global.
+        string email;
+        string senha;
         while (true)
         {
             Console.WriteLine("Digite seu E-mail: ");
-            string email = Console.ReadLine();
+            email = Console.ReadLine();
             if (ValidadorEmail.ValidacaoEmail(email))
             {
                 usuarioLogin.Add(email);
@@ -30,7 +34,7 @@ internal class Cadastrar
         while(true)
         {
             Console.WriteLine("Digite sua senha: ");
-            string senha = Console.ReadLine();
+            senha = Console.ReadLine();
             Console.WriteLine("Digite novamente a sua Senha: ");
             string confirmacaoSenha = Console.ReadLine();
             if (confirmacaoSenha.Equals(senha)){
